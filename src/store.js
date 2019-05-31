@@ -8,23 +8,30 @@ const store = new Vuex.Store({
   state: {
     loading: true,
     odata: [],
-    attributes: []
-
+    atts: []
   },
   getters: {
     getAtts (state) {
-      return state.attributes
+      return state.atts
     }
   },
   mutations: {
     updateAtts (state) {
       let i = 0
       state.odata.forEach((ticket) => {
-        state.attributes.splice(i, -1, {
-          date: new Date(ticket.ProgramEventsStartdate),
+        state.atts.splice(i, -1, {
+          dates: new Date(ticket.ProgramEventsStartdate),
           dot: 'red',
           customData: {
-            programEventsSystemrecordID: ticket.ProgramEventsSystemrecordID
+            programEventsStarttime: ticket.ProgramEventsStarttime,
+            programEventsEndtime: ticket.ProgramEventsEndtime,
+            programEventsSystemrecordID: ticket.ProgramEventsSystemrecordID,
+            blackbaudLink: `https://17197.blackbaudhosting.com/17197/sslpage.aspx?pid=196&tab=2&txobjid=${ticket.ProgramEventsSystemrecordID}`
+          },
+          popover: {
+            label: '',
+            visibility: 'focus',
+            hideIndicator: false
           }
         })
         i++
@@ -52,7 +59,6 @@ const store = new Vuex.Store({
           commit('updateAtts')
         })
     }
-
   }
 })
 store.dispatch('loadData')

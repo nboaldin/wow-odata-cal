@@ -20,4 +20,10 @@ export default {
 </script>
 
 <style>
+#app {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'Josefin Sans'
+}
 </style>
