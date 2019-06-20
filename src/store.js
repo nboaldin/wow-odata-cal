@@ -47,7 +47,7 @@ const store = new Vuex.Store({
   },
   actions: {
     loadData ({ commit }) {
-      axios.get('https://blackbaud-odata-cal-bizcswpdjy.now.sh')
+      axios.get('https://blackbaud-odata-cal-xsgopzofjo.now.sh')
         .then((response) => {
           commit('updateOdata', response.data)
         })
