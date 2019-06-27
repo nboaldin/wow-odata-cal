@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import moment from 'moment'
 
 Vue.use(Vuex)
 
@@ -18,11 +19,13 @@ const store = new Vuex.Store({
   mutations: {
     updateAtts (state) {
       let i = 0
+
       state.odata.forEach((ticket) => {
         state.atts.splice(i, -1, {
-          dates: new Date(ticket.ProgramEventsStartdate),
-          dot: 'red',
+          dates: new Date(moment(ticket.ProgramEventsStartdate, moment.ISO_8601).toDate()),
+          // dot: 'red',
           customData: {
+            ProgramEventsStartdate: ticket.ProgramEventsStartdate,
             programEventsStarttime: ticket.ProgramEventsStarttime,
             programEventsEndtime: ticket.ProgramEventsEndtime,
             programEventsSystemrecordID: ticket.ProgramEventsSystemrecordID,
@@ -47,7 +50,7 @@ const store = new Vuex.Store({
   },
   actions: {
     loadData ({ commit }) {
-      axios.get('https://blackbaud-odata-cal-xsgopzofjo.now.sh')
+      axios.get('https://blackbaud-odata-cal.now.sh')
         .then((response) => {
           commit('updateOdata', response.data)
         })
