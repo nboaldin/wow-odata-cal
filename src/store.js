@@ -40,6 +40,11 @@ const store = new Vuex.Store({
         i++
       })
     },
+    addAllDates (state) {
+      state.atts.push({
+        dates: { start: null, end: new Date(2019, 31, 12) }
+      })
+    },
     updateOdata (state, odata) {
       state.odata = odata
     },
@@ -53,6 +58,7 @@ const store = new Vuex.Store({
       axios.get('https://blackbaud-odata-cal.now.sh')
         .then((response) => {
           commit('updateOdata', response.data)
+          // commit('addAllDates')
         })
         .catch((err) => {
           console.log(err)
@@ -62,6 +68,10 @@ const store = new Vuex.Store({
           commit('updateAtts')
         })
     }
+    // async allDates ({ commit, dispatch }) {
+    //   await dispatch('loadData')
+    //   commit('addAllDates')
+    // }
   }
 })
 store.dispatch('loadData')

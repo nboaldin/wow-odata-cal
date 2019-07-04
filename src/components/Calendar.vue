@@ -1,6 +1,8 @@
 <template>
   <v-calendar
     :attributes='getAtts'
+    :min-date='new Date()'
+    :max-date='new Date(Date.parse(getAtts[getAtts.length-1].dates))'
     inline>
   <div
     slot="day-content"
