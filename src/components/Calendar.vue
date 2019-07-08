@@ -10,9 +10,13 @@
     class="">
       <p>{{day.day}}</p>
       <a class="get-tickets" :href="day.attributes[0].customData.blackbaudLink" target='_blank'>Get Tickets</a>
-      <p class="get-tickets-time">{{getFormattedTime(day.attributes[0].customData.programEventsStarttime)}} - {{getFormattedTime(day.attributes[0].customData.programEventsEndtime)}}</p>
+      <p class="get-tickets-time">{{getFormattedTime(day.attributes[0].customData.StartTime)}} - {{getFormattedTime(day.attributes[0].customData.EndTime)}}</p>
+      <p class="get-tickets-time" >Adult: {{day.attributes[0].customData.AdultPrice}}</p>
+      <p class="get-tickets-time" >Child: {{day.attributes[0].customData.ChildPrice}}</p>
   </div>
   <!-- <div
+  :min-date='new Date()'
+  :max-date='new Date(Date.parse(getAtts[getAtts.length-1].dates))'
     slot="day-popover"
     slot-scope="{ day }"
     class="">
@@ -49,7 +53,7 @@ export default {
       var hours24 = parseInt(fourDigitTime.substring(0, 2))
       var hours = ((hours24 + 11) % 12) + 1
       var amPm = hours24 > 11 ? 'pm' : 'am'
-      var minutes = fourDigitTime.substring(2)
+      var minutes = fourDigitTime.substring(2, 4)
 
       return hours + ':' + minutes + amPm
     }

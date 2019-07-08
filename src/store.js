@@ -26,8 +26,10 @@ const store = new Vuex.Store({
           // dot: 'red',
           customData: {
             ProgramEventsStartdate: ticket.ProgramEventsStartdate,
-            programEventsStarttime: ticket.ProgramEventsStarttime,
-            programEventsEndtime: ticket.ProgramEventsEndtime,
+            StartTime: ticket.StartTime,
+            EndTime: ticket.EndTime,
+            AdultPrice: ticket.AdultPrice,
+            ChildPrice: ticket.ChildPrice,
             programEventsSystemrecordID: ticket.ProgramEventsSystemrecordID,
             blackbaudLink: `https://17197.blackbaudhosting.com/17197/sslpage.aspx?pid=196&tab=2&txobjid=${ticket.ProgramEventsSystemrecordID}`
           },
