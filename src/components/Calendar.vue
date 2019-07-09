@@ -11,8 +11,8 @@
       <p>{{day.day}}</p>
       <a class="get-tickets" :href="day.attributes[0].customData.blackbaudLink" target='_blank'>Get Tickets</a>
       <p class="get-tickets-time">{{getFormattedTime(day.attributes[0].customData.StartTime)}} - {{getFormattedTime(day.attributes[0].customData.EndTime)}}</p>
-      <p class="get-tickets-time" >Adult: {{day.attributes[0].customData.AdultPrice}}</p>
-      <p class="get-tickets-time" >Child: {{day.attributes[0].customData.ChildPrice}}</p>
+      <p class="get-tickets-price" >Adult: {{day.attributes[0].customData.AdultPrice}}</p>
+      <p class="get-tickets-price" >Child: {{day.attributes[0].customData.ChildPrice}}</p>
   </div>
   <!-- <div
   :min-date='new Date()'
@@ -91,11 +91,17 @@ body .get-tickets {
   width: 100%;
   display: inline-block;
   text-align: center;
+  color: #fdc133;
+
 }
-body .get-tickets-time {
+body .get-tickets-time, body .get-tickets-price {
   font-size: 1.5rem;
   margin: 0;
   text-align: center;
+}
+body .get-tickets-time {
+  color: #fedb8b;
+
 }
 body .vc-bg-red-600 {
   background-color: #FDC133;
@@ -137,7 +143,7 @@ body .vc-day {
   font-size: 0.78rem;
   line-height: 1.4 !important;
   }
-  body .get-tickets-time {
+  body .get-tickets-time, body .get-tickets-price {
   font-size: 1rem;
   /* line-height: 1 !important; */
   }
